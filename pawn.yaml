@@ -1,0 +1,18 @@
+site: ""
+user: ff-agus44
+repo: simple-login-register
+entry: gamemodes/login_register_examples.pwn
+output: gamemodes/login_register_examples.amx
+dependencies:
+- sampctl/samp-stdlib
+- Sreyas-Sreelal/samp-bcrypt:0.3.1
+- pBlueG/SA-MP-MySQL:R41-4
+local: true
+runtime:
+  version: 0.3.7
+  mode: server
+  rcon_password: asgheqfqcdas2414
+  port: 7777
+  hostname: SA-MP Server
+  maxplayers: 50
+  language: ""

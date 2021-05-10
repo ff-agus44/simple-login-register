@@ -194,7 +194,7 @@ public OnPlayerConnect(playerid)
 {
 	// This is the bypass to hides the "spawn" button
 	TogglePlayerSpectating(playerid, true);
-	SetTimerEx(#OnPlayerCheck, 400, false, "i", playerid);
+	SetTimerEx(#OnPlayerCheck, 800, false, "i", playerid);
 	return 1;
 }
 

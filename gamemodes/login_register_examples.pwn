@@ -4,7 +4,7 @@
 
 #define COLOR_WHITE 0xFFFFFFFF
 
-// Change this if you want!
+// Change this if you do not have default MySQL config.
 #define MYSQL_HOSTNAME "127.0.0.1"
 #define MYSQL_USERNAME "root"
 #define MYSQL_PASSWORD ""
@@ -18,7 +18,7 @@
 
 // This is the the length of bcrypt i have using until now
 #if !defined BCRYPT_HASH_LENGTH
-	#define BCRYPT_HASH_LENGTH 250
+	#define BCRYPT_HASH_LENGTH 60
 #endif 
 
 // And this is the default bcrypt cost
@@ -40,6 +40,7 @@ enum {
 };
 
 // This code is how do i get the name, please do not edit any parts in it
+// And you can replace this function with your own (you do not need to copy this functions tho)
 forward [25]GetName(playerid);
 GetName(playerid)
 {
@@ -138,7 +139,7 @@ public OnPlayerPasswordChecked(playerid, bool:success)
 		);
 
 	// but if success is true, you can call anything like OnAccountLoad, etc
-	// depends on you.
+	// depends on you, and also you can use CallRemoteFunction if you wish want to make API for filterscripts.
 	OnAccountLoad(playerid); //or CallLocalFunction(#OnAccountLoad, "i", playerid);
 	SendClientMessage(playerid, COLOR_WHITE, "SERVER: Sukses login kedalam server!");
 	return 1;
@@ -173,8 +174,19 @@ public OnGameModeInit()
 	// Check if connection ID that is in gSQLHandle is invalid or is error
 	if (gSQLHandle == MYSQL_INVALID_HANDLE || mysql_errno(gSQLHandle) != 0)
 	{
-		// if so, print this and exit
-		printf("Connection to "MYSQL_HOSTNAME" failed, make sure your MySQL server is running!");
+		// if so, get the message error print this then terminate the server
+		new 
+			errMsg[128];
+
+		mysql_error(errMsg, sizeof(errMsg))
+
+		printf(
+			"Connection to "MYSQL_HOSTNAME" failed!\n"\
+			">> Error ID #%d\n"\
+			">> Error Info: %s",
+			mysql_errno(gSQLHandle),
+			errMsg
+		);
 		SendRconCommand("exit");
 		return 1;
 	}

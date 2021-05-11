@@ -178,7 +178,7 @@ public OnGameModeInit()
 		new 
 			errMsg[128];
 
-		mysql_error(errMsg, sizeof(errMsg))
+		mysql_error(errMsg, sizeof(errMsg));
 
 		printf(
 			"Connection to "MYSQL_HOSTNAME" failed!\n"\
@@ -195,7 +195,7 @@ public OnGameModeInit()
 	printf("Connection to "MYSQL_HOSTNAME" is successfull!");
 
 	// Create the simple table that holds id, name, and password
-	mysql_query(gSQLHandle, "CREATE TABLE IF NOT EXISTS acounts (id INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(25) NOT NULL, password VARCHAR(250) NOT NULL)", false);
+	mysql_query(gSQLHandle, "CREATE TABLE IF NOT EXISTS acounts (id INT(16) NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(25) NOT NULL, password VARCHAR("#BCRYPT_HASH_LENGTH") NOT NULL)", false);
 	
 	// do anything you want below here
 	//

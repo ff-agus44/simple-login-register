@@ -103,8 +103,8 @@ public OnMySQLResponse(playerid, race_check)
 }
 
 // Here i made the function to store the current hashing into mysql
-forward OnPlayerPasswordHashed(playerid, hashid);
-public OnPlayerPasswordHashed(playerid, hashid)
+forward OnPlayerPasswordHashed(playerid);
+public OnPlayerPasswordHashed(playerid)
 {
 	// First i declare the local variables that i needed
 	new 

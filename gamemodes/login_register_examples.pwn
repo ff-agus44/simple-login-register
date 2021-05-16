@@ -227,7 +227,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			
 			// but if more than 5 characters/length, it is good enough to hash the passwod, and the result will be 
 			// OnPlayerPasswordHashed functions.
-			bcrypt_hash(playerid, #OnPlayerPasswordHashed, inputtext, BCRYPT_COST);
+			bcrypt_hash(playerid, #OnPlayerPasswordHashed, inputtext, BCRYPT_COST, "i", playerid);
 			return 1;
 		}
 		case E_DIALOG_LOGIN:

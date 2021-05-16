@@ -35,7 +35,7 @@ static g_MysqlRaceCheck[MAX_PLAYERS];
 // This is same as define, but it automatically increased by one
 // and this is why i have choosen enum like this
 enum {
-	E_DIALOG_REGISTER,
+	E_DIALOG_REGISTER = 16683, // adding special index to prevent the conflict.
 	E_DIALOG_LOGIN
 };
 

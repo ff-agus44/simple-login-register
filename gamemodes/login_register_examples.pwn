@@ -40,7 +40,7 @@ enum {
 };
 
 // I use this function to get the name
-GetName(playerid)
+ReturnPlayerName(playerid)
 {
 	// and then use the values to get the name and for returns
 	// since you cannot return string directly (you do not need to know about this stuff)

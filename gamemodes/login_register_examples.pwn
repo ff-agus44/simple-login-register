@@ -39,18 +39,19 @@ enum {
 	E_DIALOG_LOGIN
 };
 
-// This code is how do i get the name, please do not edit any parts in it
-// And you can replace this function with your own (you do not need to copy this functions tho)
-forward [25]GetName(playerid);
+// I use this function to get the name
 GetName(playerid)
 {
-	#emit PUSH.C 25
-	#emit PUSH.S 16
-	#emit PUSH.S playerid
-	#emit PUSH.C 12
-	#emit SYSREQ.C GetPlayerName
-	#emit STACK 16
-	#emit RETN
+	// and then use the values to get the name and for returns
+	// since you cannot return string directly (you do not need to know about this stuff)
+	new 
+		returnNames[MAX_PLAYER_NAME + 1];
+
+	// Get the current name that player have, and store it to returnNames
+	GetPlayerName(playerid, returnNames, sizeof(returnNames));
+
+	// After all done, we return the name using this
+	return returnNames;
 }
 
 // I used OnPlayerCheck to checking if the query exists or not

@@ -92,7 +92,7 @@ public OnMySQLResponse(playerid, race_check)
 			"Masuk", "Keluar"
 		);
 	}
-	// and when it is not zero, tell player to login instead.
+	// and when it is not zero, tell player to register instead.
 	else
 	{
 		ShowPlayerDialog(playerid, E_DIALOG_REGISTER, DIALOG_STYLE_PASSWORD, "Your Roleplay - Register",
